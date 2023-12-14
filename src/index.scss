@@ -20,12 +20,13 @@ header {
     .cover {
         width: 100%;
         height: 40vw;
-        background: url("/desktop-cover.png");
+        background-image: url("/desktop-cover.png"), url("/desktop-cover-2.jpg");
         background-size: cover;
         background-position: 50% 25%;
         position: relative;
         clip-path: inset(0 0 100% 0);
-    }
+      }
+      
 
     .grass {
         background: url(/cover-grass.png);
