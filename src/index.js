@@ -58,7 +58,13 @@ function runAnimationsForSmallScreens() {
 function runAnimationsForLargeScreens() {
   document.body.style.overflow = 'hidden';
 
-  const tl = gsap.timeline();
+  // Preload the "desktop-cover-2.jpg" image
+  const preloadedImage = new Image();
+  preloadedImage.src = "/desktop-cover-2.jpg";
+
+  // Wait for the image to load before triggering animations
+  preloadedImage.onload = function () {
+    const tl = gsap.timeline();
 
   // Animate header elements
   tl.to('header .cover', {
@@ -68,41 +74,41 @@ function runAnimationsForLargeScreens() {
     clipPath: "inset(0% 0% 0% 0%)"
   }, "0.5");
 
-  tl.from('header .grass', {
-    y: -500,
-    opacity: 0,
+  tl.to('header .grass', {
+    y: 0,
+    opacity: 1,
     duration: 1,
     ease: "power3.inOut",
-    clipPath: "inset(0 0 0 100%)",
+    clipPath: "inset(0 0 0 0%)",
     stagger: 0.5
   }, "0.9");
 
   // Animate scroll-down text and dots sequentially
-  tl.from('.scroll-down p', {
+  tl.to('.scroll-down p', {
     duration: 0.8,
-    opacity: 0,
-    y: -20,
+    opacity: 1,
+    y: 0,
     ease: 'power3.out'
   });
 
-  tl.from('.scroll-down .dot-1', {
+  tl.to('.scroll-down .dot-1', {
     duration: 0.5,
-    opacity: 0,
-    scale: 0,
+    opacity: 1,
+    scale: 1,
     ease: 'back.out'
   });
 
-  tl.from('.scroll-down .dot-2', {
+  tl.to('.scroll-down .dot-2', {
     duration: 0.5,
-    opacity: 0,
-    scale: 0,
+    opacity: 1,
+    scale: 1,
     ease: 'back.out'
   }, '-=0.3'); // Overlap with the previous animation for smooth transition
 
-  tl.from('.scroll-down .dot-3', {
+  tl.to('.scroll-down .dot-3', {
     duration: 0.5,
-    opacity: 0,
-    scale: 0,
+    opacity: 1,
+    scale: 1,
     ease: 'back.out'
   }, '-=0.3'); // Overlap with the previous animation
 
@@ -114,7 +120,7 @@ function runAnimationsForLargeScreens() {
 
   // Iterate through banner elements and add animations to the timeline
   gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
-    gsap.from(banner, {
+    gsap.to(banner, {
       scrollTrigger: {
         trigger: banner,
         start: 'top center', // Animation starts when the banner is at the center of the viewport
@@ -122,8 +128,8 @@ function runAnimationsForLargeScreens() {
         toggleActions: 'play none none none',
         markers: false
       },
-      clipPath: "inset(0 0 100% 0)",
-      y: 50,
+      clipPath: "inset(0 0 0% 0)",
+      y: 0,
       duration: 1, // Animation duration in seconds
       ease: "power3.out", // Easing function
     });
@@ -142,29 +148,22 @@ function runAnimationsForLargeScreens() {
   // Play the timeline
   tl.play();
 
-  // Pitch animation
-  // Create a GSAP timeline for the pitch section animation
-  const pitchTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".pitch",
-      start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
-      end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
-      toggleActions: "play none none none",
-      markers: false,
-      scrub: 0.2
-    },
-  });
+  // Enable scrolling after the animation is complete
+  tl.eventCallback("onComplete", () => {
+    document.body.style.overflow = 'auto';
+    document.body.style.minHeight = '200vh';
 
-  // Define the animations for the pitch section
-  pitchTl.from(".pitch", {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    ease: "power3.out",
+    // Load "desktop-cover.png" after animations are complete
+    const coverImage = new Image();
+    coverImage.src = "/desktop-cover.png";
+    coverImage.onload = function () {
+      // Set the background image to "desktop-cover.png"
+      const coverElement = document.querySelector(".cover");
+      coverElement.style.backgroundImage = `url("${coverImage.src}")`;
+    };
   });
-    
+};
 }
-
 
 
 

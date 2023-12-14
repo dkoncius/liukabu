@@ -95,21 +95,5 @@
     
     <script type="module" src="/src/index.js"></script>
     <script type="module" src="/src/mail.js"></script>
-    <script type="module">
-      // Function to preload the better image after a delay
-      function preloadBetterImage() {
-        setTimeout(function () {
-          var coverElement = document.querySelector(".cover");
-          coverElement.style.backgroundImage = 'url("/desktop-cover.png")';
-        }, 3000); // Adjust the delay (in milliseconds) as needed
-      }
-    
-      // Preload the worse image initially
-      var coverElement = document.querySelector(".cover");
-      coverElement.style.backgroundImage = 'url("/desktop-cover-2.jpg")';
-    
-      // Call the preloadBetterImage function after a delay
-      preloadBetterImage();
-    </script>
   </body>
 </html>
