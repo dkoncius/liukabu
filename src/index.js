@@ -74,15 +74,6 @@ function runAnimationsForLargeScreens() {
     clipPath: "inset(0% 0% 0% 0%)"
   }, "0.5");
 
-  tl.to('header .grass', {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power3.inOut",
-    clipPath: "inset(0 0 0 0%)",
-    stagger: 0.5
-  }, "0.9");
-
   // Animate scroll-down text and dots sequentially
   tl.to('.scroll-down p', {
     duration: 0.8,

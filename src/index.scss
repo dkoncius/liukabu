@@ -19,24 +19,13 @@ body {
 header {
     .cover {
         width: 100%;
-        height: 40vw;
+        height: 55vw;
         background-image: url("/desktop-cover.png"), url("/desktop-cover-2.jpg");
         background-size: cover;
         background-position: 50% 25%;
         position: relative;
         clip-path: inset(0 0 100% 0);
       }
-      
-
-    .grass {
-        background: url('/cover-grass.png');
-        background-size: contain;
-        height: 67px;
-        margin-top: -30px;
-        transform: translateY(-500px);
-        opacity: 0;
-        clip-path: inset(0 0 0 100%);
-    }
 }
 
 .banners {
