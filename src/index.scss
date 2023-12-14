@@ -213,6 +213,20 @@ footer {
     }
 }
 
+
+@media (max-width: 600px){
+
+    .banners {
+        gap: 10px;
+        .banner {
+            width:  150px !important;
+        }
+    
+    }
+}
+
+
+
 @media (max-width: 1025px){
 
     header .cover{
@@ -240,9 +254,11 @@ footer {
             width: 250px;
             clip-path: inset(0 0 0% 0);
             transform: translateY(0px);
+            height: 300px;
         
             &::before {
                 background: #e07ba7;
+                bottom: 0;
             }
         }
     }

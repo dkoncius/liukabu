@@ -153,6 +153,28 @@ function runAnimationsForLargeScreens() {
       coverElement.style.backgroundImage = `url("${coverImage.src}")`;
     };
   });
+
+
+    // Pitch animation
+  // Create a GSAP timeline for the pitch section animation
+  const pitchTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".pitch",
+      start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
+      end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
+      toggleActions: "play none none none",
+      markers: false,
+      scrub: 0.2
+    },
+  });
+
+  // Define the animations for the pitch section
+  pitchTl.from(".pitch", {
+    opacity: 0,
+    y: 20,
+    duration: 1,
+    ease: "power3.out",
+  });
 };
 }
 
