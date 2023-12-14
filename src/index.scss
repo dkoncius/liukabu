@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Poppins:wght@100;300;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url("/arrow-pointer-solid.svg"), pointer;
+}
+
+body {
+    background-color: #0f3c37;
+    font-family: 'Poppins', arial;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    .cover {
+        width: 100%;
+        height: 40vw;
+        background: url("/desktop-cover.png");
+        background-size: cover;
+        background-position: 50% 25%;
+        position: relative;
+        clip-path: inset(0 0 100% 0);
+    }
+
+    .grass {
+        background: url(/cover-grass.png);
+        background-size: contain;
+        height: 67px;
+        margin-top: -30px;
+    }
+}
+
+.banners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1600px;
+    width: 90%;
+    margin: auto;
+    margin-top: -100px;
+
+    .banner {
+        justify-self: center;
+        width: 300px;
+        position: relative;
+
+        &::before {
+            cursor: url("/hand-pointer-solid.svg"), pointer;
+            font-family:'Hachi Maru Pop', cursive;
+            content: "Pirkti";
+            text-align: center;
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            line-height: 75px;
+            height: 75px;
+            background: rgba(224, 123, 167, 0.3);
+            color: white;
+            transition: 0.3s;
+        }
+
+        &:hover::before {
+            background: #e07ba7;
+        }
+
+        img {
+            cursor: url("/hand-pointer-solid.svg"), pointer;
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            box-shadow: 0px -2px 15px 5px black;
+         }
+    }
+}
+
+
+
+.scroll-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    color: white;
+    position: absolute;
+    width: 150px;
+    top: 40vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .dot-1 {
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 30px;
+        animation: 1s dots infinite alternate;
+        animation-delay: 0.2s;
+    }
+
+    .dot-2 {
+        width: 15px;
+        height: 15px;
+        background: white;
+        border-radius: 20px;
+        animation: 1s dots infinite alternate;
+        animation-delay: 0.4s;
+    }
+
+    .dot-3 {
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 10px;
+        animation: 1s dots infinite alternate;
+        animation-delay: 0.6s;
+    }
+}
+
+
+@keyframes dots {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0.8);
+    }
+}
+
+
+.pitch {
+    text-align: justify;
+    color: #d3dbbb;
+    max-width: 1200px;
+    width: 90%;
+    margin: 100px auto;
+    font-size: clamp(20px, 1.5em, 45px);
+    line-height: 1.8em;
+
+    p {
+        margin: 50px 0;
+    }
+
+    ul {
+        list-style: none;
+        list-style-position: inside;
+    }
+
+    input {
+        background: #d3dbbb;
+        border: none;
+        outline: none;
+        padding: 20px;
+        margin: auto;
+        color: #0f3c37;
+        font-size: 1.2em;
+        width: 100%;
+    }
+
+    input::placeholder {
+        color: #0f3c37;
+        opacity: 0.7;
+    }
+}
+
+
+
+footer {
+
+    .social {
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        gap: 150px;
+
+        .icon {
+            cursor: url("/hand-pointer-solid.svg"), pointer;
+        }
+
+
+        svg {
+            cursor: url("/hand-pointer-solid.svg"), pointer;
+            transform: scale(3);
+        }
+
+        svg path {
+            cursor: url("/hand-pointer-solid.svg"), pointer;
+            transition: 0.3s;
+        }
+
+        svg:hover path {
+            fill: #e07ba7;
+        }
+
+    }
+    .grass {
+        background: url(/cover-grass.png);
+        background-size: contain;
+        height: 67px;
+        margin-top: -30px;
+    }
+}
+
+@media (max-width: 1025px){
+
+    header .cover{
+        position: relative;
+        clip-path: inset(0 0 0% 0);
+    }
+
+    header .scroll-down {
+        display: none;
+    }
+    .cover {
+        height: 45vw;
+    }
+
+    .banners {
+        opacity: 0;
+        .banner {
+            width: 250px;
+        
+            &::before {
+                background: #e07ba7;
+            }
+        }
+    }
+
+    footer .social {
+        gap: 100px;
+    }
+}
+
