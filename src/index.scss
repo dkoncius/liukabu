@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     cursor: url("/arrow-pointer-solid.svg"), pointer;
+    user-select: none;
 }
 
 body {
@@ -246,6 +247,10 @@ footer {
 
 @media (max-width: 1025px){
 
+    * {
+        cursor: default;
+    }
+    
     header .cover{
         position: relative;
         clip-path: inset(0 0 0% 0);
