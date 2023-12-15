@@ -19,12 +19,13 @@ body {
 header {
     .cover {
         width: 100%;
-        height: 40vw;
+        height: 55vw;
         background-image: url("/desktop-cover.png"), url("/desktop-cover-2.jpg");
         background-size: cover;
         background-position: 50% 100%;
         position: relative;
         clip-path: inset(0 0 100% 0);
+        border: 50px solid #0f3c37;
       }
 }
 
@@ -248,6 +249,7 @@ footer {
     header .cover{
         position: relative;
         clip-path: inset(0 0 0% 0);
+        border: 0px solid #0f3c37;
     }
 
     header .scroll-down {
@@ -270,11 +272,20 @@ footer {
             width: 250px;
             clip-path: inset(0 0 0% 0);
             transform: translateY(0px);
-            height: 300px;
+            height: 150px;
+          
+            img {
+                
+                transform: translateY(-120px);
+            
+            }
         
             &::before {
+                height: 50px;
+                line-height: 50px;
                 background: #e07ba7;
                 bottom: 0;
+                z-index: 1;
             }
         }
     }
