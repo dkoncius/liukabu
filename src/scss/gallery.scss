@@ -22,7 +22,7 @@
     overflow: hidden;
     transition-property: all;
     cursor: url("/icons/hand-pointer-solid.svg"), pointer;
-    transition: 0.3s;
+    transition: 0.3s !important;
 
     .iframe-overlay {
         position: absolute;
@@ -37,6 +37,7 @@
 
      &.swiper-slide-active {
         border-color: $light-green;
+     
     
         &::before {
             content: "";
