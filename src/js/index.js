@@ -7,19 +7,17 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
-// Function to run animations for screens less than 1025px
 function runAnimationsForSmallScreens() {
-  
-  const tl = gsap.timeline();
-
-  // Iterate through banner elements and add animations to the timeline
-  tl.to(".banners", {
-    opacity: 1,
-    y: 50,
-    duration: 1, // Animation duration in seconds
-    ease: "power3.out", // Easing function
+  // Animate each banner individually
+  gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
+    gsap.to(banner, {
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.8"); // Adjust the overlap for a staggered effect
   });
-  // ScrollTrigger animation to hide the "scroll-down" element
+
+  // ScrollTrigger animation for the "scroll-down" element
   gsap.to(".scroll-down", {
     opacity: 0,
     scrollTrigger: {
@@ -29,23 +27,17 @@ function runAnimationsForSmallScreens() {
     },
   });
 
-  // Play the timeline
-  tl.play();
-
-  // Pitch animation
-  // Create a GSAP timeline for the pitch section animation
+  // Pitch section animation
   const pitchTl = gsap.timeline({
     scrollTrigger: {
       trigger: ".pitch",
       start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
       end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
       toggleActions: "play none none none",
-      markers: false,
-      scrub: 0.2
+      markers: false
     },
   });
 
-  // Define the animations for the pitch section
   pitchTl.from(".pitch", {
     opacity: 0,
     y: 20,
@@ -53,6 +45,7 @@ function runAnimationsForSmallScreens() {
     ease: "power3.out",
   });
 }
+
 
 // Function to run animations for screens greater than 1025px
 function runAnimationsForLargeScreens() {
@@ -122,7 +115,8 @@ function runAnimationsForLargeScreens() {
       clipPath: "inset(0 0 0% 0)",
       y: 0,
       duration: 1, // Animation duration in seconds
-      ease: "power3.out", // Easing function
+      ease: "power3.out",
+      stagger: 0.2
     });
   });
 

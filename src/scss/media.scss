@@ -39,12 +39,12 @@
     }
 
     .banners {
-        opacity: 0;
 
         .banner {
+            opacity: 0;
             width: 250px;
             clip-path: inset(0 0 0% 0);
-            transform: translateY(0px);
+            // transform: translateY(50px);
             height: 150px;
           
             img {
