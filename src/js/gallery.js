@@ -5,9 +5,9 @@ const swiper = new Swiper('.swiper', {
   // Optional parameters
   direction: 'horizontal',
   loop: true,
-  slidesPerView: 1.8,
+  slidesPerView: 1,
   centeredSlides: true,
-  spaceBetween: 30,
+  spaceBetween: 15,
 
   // Enable smoother transitions
   speed: 800, // Transition speed in milliseconds (adjust as needed)
@@ -22,7 +22,30 @@ const swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+
+  breakpoints: {
+    1025: {
+      slidesPerView: 1.8,
+      spaceBetween: 30
+    }
+  },
+
+  on: {
+    slideChange: function () {
+      // Find all iframes within the swiper and stop their content
+      const iframes = this.el.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        try {
+          const src = iframe.src;
+          iframe.src = src; // This will reload the iframe, stopping the video
+        } catch (error) {
+          console.error("Error stopping video in iframe: ", error);
+        }
+      });
+    }
   }
+  
 });
 
 

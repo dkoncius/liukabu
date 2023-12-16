@@ -70,5 +70,17 @@
     footer .social {
         gap: 100px;
     }
+
+
+    .swiper-button-prev {
+        padding-right: 0px;
+        left: 10px !important;
+    }
+    
+    .swiper-button-next {
+        padding-left: 5px;
+        right: 10px !important;
+    }
+    
 }
 
