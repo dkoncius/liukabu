@@ -51,31 +51,32 @@ const swiper = new Swiper('.swiper', {
 
 
 
-const swiperExpand = () => {
-  // Toggle expanded class
-  document.querySelector(".swiper").classList.toggle('expanded');
+const swiperContainer = document.querySelector(".swiper");
+const toggleSwiperExpand = () => {
+  swiperContainer.classList.toggle('expanded');
+  swiper.autoplay[swiperContainer.classList.contains('expanded') ? 'stop' : 'start']();
+}
 
-  // Stop or start autoplay based on expanded state
-  if (document.querySelector(".swiper").classList.contains('expanded')) {
+const stopSwiperAutoplay = (overlay) => {
+  swiper.autoplay.stop();
+  overlay.style.zIndex = -1;
+}
+
+const toggleAutoplayDirection = (isReverse) => {
+  if (swiper.autoplay.running) {
     swiper.autoplay.stop();
-  } else {
-    swiper.autoplay.start();
   }
-
+  swiper.params.autoplay.reverseDirection = isReverse;
+  swiper.autoplay.start();
 }
 
 document.querySelectorAll('.swiper-slide').forEach(slide => {
-  slide.addEventListener("click", swiperExpand)
+  slide.addEventListener("click", toggleSwiperExpand);
 });
-
 
 document.querySelectorAll('.swiper-slide .iframe-overlay').forEach(overlay => {
-  overlay.addEventListener('click', function() {
-    
-    // Stop Swiper autoplay
-    swiper.autoplay.stop();
-
-    overlay.style.zIndex = -1
-
-  });
+  overlay.addEventListener('click', () => stopSwiperAutoplay(overlay));
 });
+
+document.querySelector('.swiper-button-next').addEventListener('click', () => toggleAutoplayDirection(false));
+document.querySelector('.swiper-button-prev').addEventListener('click', () => toggleAutoplayDirection(true));
