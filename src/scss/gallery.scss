@@ -1,4 +1,98 @@
 .swiper {
-    width: 600px;
     height: 300px;
+    margin-bottom: 100px;
+    transition: 0.3s;
 }
+
+.expanded {
+    // width: 90vw; /* or any size you want when expanded */
+    height: 600px;
+
+    .swiper-slide.swiper-slide-active::before {
+        background: url("/icons/shrink-solid.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+.swiper-slide {
+    width: 66.66%; /* Adjust width for showing 1.5 slides at a time */
+    border: 5px solid $dark-green;
+    border-radius: 15px;
+    overflow: hidden;
+    transition-property: all;
+    cursor: url("/icons/hand-pointer-solid.svg"), pointer;
+    transition: 0.3s;
+
+    .iframe-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+ 
+
+     &.swiper-slide-active {
+        border-color: $light-green;
+    
+        &::before {
+            content: "";
+            background: url("/icons/expande-solid.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }   
+}
+
+
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: $light-green;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    &::after {
+        color: $dark-green !important;
+        font-size: 1.5em !important;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    &:hover {
+        background: $dark-green;
+
+        &::after {
+            color: $light-green !important;
+        }
+    }
+}
+
+.swiper-button-prev {
+    padding-right: 0px;
+    left: 100px !important;
+}
+
+.swiper-button-next {
+    padding-left: 5px;
+    right: 100px !important;
+}
+
+

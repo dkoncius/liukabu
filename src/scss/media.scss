@@ -1,0 +1,74 @@
+
+
+@media (max-width: 600px){
+
+    .banners {
+        gap: 10px;
+        .banner {
+            width:  150px !important;
+        }
+    
+    }
+}
+
+
+
+@media (max-width: 1025px){
+
+    * {
+        cursor: default;
+    }
+    
+    header .cover{
+        position: relative;
+        clip-path: inset(0 0 0% 0);
+        border: 0px solid $dark-green;
+    }
+
+    header .scroll-down {
+        display: none;
+    }
+
+    header .grass {
+        opacity: 1;
+        clip-path: inset(0 0 0 0%);
+        transform: translateY(0);
+    }
+    .cover {
+        height: 45vw;
+    }
+
+    .banners {
+        opacity: 0;
+
+        .banner {
+            width: 250px;
+            clip-path: inset(0 0 0% 0);
+            transform: translateY(0px);
+            height: 150px;
+          
+            img {
+                
+                transform: translateY(-120px);
+            
+            }
+        
+            &::before {
+                height: 50px;
+                line-height: 50px;
+                background: $pink;
+                bottom: 0;
+                z-index: 1;
+            }
+        }
+    }
+
+    .pitch {
+        font-size: 15px;
+    }
+
+    footer .social {
+        gap: 100px;
+    }
+}
+

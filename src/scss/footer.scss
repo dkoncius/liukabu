@@ -1,0 +1,48 @@
+
+footer {
+    position: relative;
+    .social {
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        gap: 150px;
+
+        .icon {
+            cursor: url("/icons/hand-pointer-solid.svg"), pointer;
+        }
+
+
+        svg {
+            cursor: url("/icons/hand-pointer-solid.svg"), pointer;
+            transform: scale(3);
+        }
+
+        svg path {
+            cursor: url("/icons/hand-pointer-solid.svg"), pointer;
+            transition: 0.3s;
+        }
+
+        svg:hover path {
+            fill: $pink;
+        }
+
+    }
+    .flaming {
+        position: absolute;
+        background: url('/icons/flaming.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        width: 400px;
+        margin-top: -30px;
+        bottom: -100px;
+        right: 50px;
+    }
+
+    .grass {
+        background: url('/covers/grass-cover.png');
+        background-size: contain;
+        height: 67px;
+        margin-top: -30px;
+    }
+}

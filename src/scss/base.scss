@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Poppins:wght@100;300;600&display=swap');
+
+$dark-green: #0f3c37;
+$light-green: #d3dbbb;
+$pink: #e07ba7;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url("/icons/arrow-pointer-solid.svg"), pointer;
+    user-select: none;
+}
+
+body {
+    background-color: $dark-green;
+    font-family: 'Poppins', arial;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

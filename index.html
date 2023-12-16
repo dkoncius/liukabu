@@ -25,9 +25,8 @@
      <meta property="og:url" content="https://www.liukabu.lt">
      
     <title>LiuKaBu</title>
-    <script type="text/javascript" src="https://www.apispreadsheets.com/import.js"></script>
+
     <link rel="stylesheet" href="/src/scss/index.scss">
-    <link rel="stylesheet" href="/src/scss/gallery.scss">
   </head>
   <body>
     <header>
@@ -82,15 +81,39 @@
     </section>
 
 
-    <!-- <div class="swiper-container gallery">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="iframe-overlay"></div>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/BNN9p7YH_hQ?si=puxqof_okZUERVkf" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
       </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div> -->
+      <div class="swiper-slide">
+        <img src="/images/image-1.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/image-2.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/image-3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/image-4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/image-5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/image-6.jpg" alt="">
+      </div>
+    </div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
       
 
 
@@ -120,7 +143,8 @@
 
     
     
-    <script type="module" src="/src/js/index.js"></script>
+    <!-- <script type="module" src="/src/js/index.js"></script> -->
+    <script type="text/javascript" src="https://www.apispreadsheets.com/import.js"></script>
     <script type="module" src="/src/js/mail.js"></script>
     <script type="module" src="/src/js/gallery.js"></script>
   </body>
