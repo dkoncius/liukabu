@@ -1,0 +1,27 @@
+.form-section {
+    max-width: 1200px;
+    width: 90%;
+    margin: 100px auto;
+    font-size: clamp(20px, 1.5em, 45px);
+    color: $light-green;
+        
+    p {
+        margin: 50px 0;
+    }
+
+    input {
+        background: $light-green;
+        border: none;
+        outline: none;
+        padding: 20px;
+        margin: auto;
+        color: $dark-green;
+        font-size: 1.2em;
+        width: 100%;
+    }
+
+    input::placeholder {
+        color: $dark-green;
+        opacity: 0.7;
+    }
+}

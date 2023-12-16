@@ -163,8 +163,7 @@ function runAnimationsForLargeScreens() {
       start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
       end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
       toggleActions: "play none none none",
-      markers: false,
-      scrub: 0.2
+      markers: false
     },
   });
 
