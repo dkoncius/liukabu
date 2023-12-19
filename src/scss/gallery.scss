@@ -5,7 +5,7 @@
 
 .expanded {
     // width: 90vw; /* or any size you want when expanded */
-    height: 600px;
+    height: 600px !important;
 
     .swiper-slide.swiper-slide-active::before {
         background: url("/icons/shrink-solid.svg");
