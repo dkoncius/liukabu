@@ -32,11 +32,12 @@ footer {
         background: url('/icons/flaming.png');
         background-repeat: no-repeat;
         background-size: contain;
-        height: 300px;
-        width: 400px;
+        height: clamp(157px, 4vw, 201px);
+        width: clamp(90px, 10vw, 141px);
         margin-top: -30px;
-        bottom: -100px;
-        right: 50px;
+        bottom: 12px;
+        right: 150px;
+        z-index: -1;
     }
 
     .grass {
