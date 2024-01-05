@@ -10,7 +10,7 @@ window.onbeforeunload = function () {
 function runAnimationsForSmallScreens() {
   // Preload the "desktop-cover-2.jpg" image
   const preloadedImage = new Image();
-  preloadedImage.src = "/covers/desktop-cover-2.jpg";
+  preloadedImage.src = "/covers/desktop-cover.jpg";
 
   // Wait for the image to load before triggering animations
   preloadedImage.onload = function () {
@@ -60,7 +60,7 @@ function runAnimationsForLargeScreens() {
 
   // Preload the "desktop-cover-2.jpg" image
   const preloadedImage = new Image();
-  preloadedImage.src = "/covers/desktop-cover-2.jpg";
+  preloadedImage.src = "/covers/desktop-cover.jpg";
 
   // Wait for the image to load before triggering animations
   preloadedImage.onload = function () {
@@ -114,7 +114,7 @@ function runAnimationsForLargeScreens() {
     gsap.to(banner, {
       scrollTrigger: {
         trigger: banner,
-        start: 'top center', // Animation starts when the banner is at the center of the viewport
+        start: 'top bottom-=600', // Animation starts when the banner is at the center of the viewport
         end: 'bottom top-=200',   // Animation ends when the banner is still at the center
         toggleActions: 'play none none none',
         markers: false
