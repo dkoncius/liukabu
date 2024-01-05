@@ -114,7 +114,7 @@ function runAnimationsForLargeScreens() {
     gsap.to(banner, {
       scrollTrigger: {
         trigger: banner,
-        start: 'top bottom-=600', // Animation starts when the banner is at the center of the viewport
+        start: 'top bottom-=550', // Animation starts when the banner is at the center of the viewport
         end: 'bottom top-=200',   // Animation ends when the banner is still at the center
         toggleActions: 'play none none none',
         markers: false
