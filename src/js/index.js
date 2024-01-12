@@ -144,15 +144,6 @@ function runAnimationsForLargeScreens() {
   tl.eventCallback("onComplete", () => {
     document.body.style.overflow = 'auto';
     document.body.style.minHeight = '200vh';
-
-    // Load "desktop-cover.png" after animations are complete
-    const coverImage = new Image();
-    coverImage.src = "/desktop-cover.png";
-    coverImage.onload = function () {
-      // Set the background image to "desktop-cover.png"
-      const coverElement = document.querySelector(".cover");
-      coverElement.style.backgroundImage = `url("${coverImage.src}")`;
-    };
   });
 
 
