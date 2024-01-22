@@ -9,11 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-css": "^1.0.4"
   },
   "dependencies": {
-    "sass": "^1.69.5",
     "gsap": "^3.12.3",
+    "sass": "^1.69.5",
     "swiper": "^11.0.5"
   }
 }
