@@ -8,63 +8,49 @@ window.onbeforeunload = function () {
 }
 
 function runAnimationsForSmallScreens() {
-  // Preload the "desktop-cover-2.jpg" image
-  const preloadedImage = new Image();
-  preloadedImage.src = "/covers/desktop-cover.jpg";
-
-  // Wait for the image to load before triggering animations
-  preloadedImage.onload = function () {
-    // Animate each banner individually
-    gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
-      gsap.to(banner, {
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out"
-      }, "-=0.8"); // Adjust the overlap for a staggered effect
-    });
-  
-    // ScrollTrigger animation for the "scroll-down" element
-    gsap.to(".scroll-down", {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: ".scroll-down",
-        start: "top center", // Hide when it reaches the center of the viewport
-        toggleActions: "play none none none",
-      },
-    });
-  
-    // Pitch section animation
-    const pitchTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".pitch",
-        start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
-        end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
-        toggleActions: "play none none none",
-        markers: false
-      },
-    });
-  
-    pitchTl.from(".pitch", {
-      opacity: 0,
-      y: 20,
+  // Animate each banner individually
+  gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
+    gsap.to(banner, {
+      opacity: 1,
       duration: 1,
-      ease: "power3.out",
-    });
-  }
-}
+      ease: "power3.out"
+    }, "-=0.8"); // Adjust the overlap for a staggered effect
+  });
 
+  // ScrollTrigger animation for the "scroll-down" element
+  gsap.to(".scroll-down", {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: ".scroll-down",
+      start: "top center", // Hide when it reaches the center of the viewport
+      toggleActions: "play none none none",
+    },
+  });
+
+  // Pitch section animation
+  const pitchTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".pitch",
+      start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
+      end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
+      toggleActions: "play none none none",
+      markers: false
+    },
+  });
+
+  pitchTl.from(".pitch", {
+    opacity: 0,
+    y: 20,
+    duration: 1,
+    ease: "power3.out",
+  });
+}
 
 // Function to run animations for screens greater than 1025px
 function runAnimationsForLargeScreens() {
   document.body.style.overflow = 'hidden';
 
-  // Preload the "desktop-cover-2.jpg" image
-  const preloadedImage = new Image();
-  preloadedImage.src = "/covers/desktop-cover.jpg";
-
-  // Wait for the image to load before triggering animations
-  preloadedImage.onload = function () {
-    const tl = gsap.timeline();
+  const tl = gsap.timeline();
 
   // Animate header elements
   tl.to('header .cover', {
@@ -146,8 +132,7 @@ function runAnimationsForLargeScreens() {
     document.body.style.minHeight = '200vh';
   });
 
-
-    // Pitch animation
+  // Pitch animation
   // Create a GSAP timeline for the pitch section animation
   const pitchTl = gsap.timeline({
     scrollTrigger: {
@@ -166,10 +151,7 @@ function runAnimationsForLargeScreens() {
     duration: 1,
     ease: "power3.out",
   });
-};
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
   // Check if the screen width is greater than 1025px
@@ -181,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function() {
     runAnimationsForSmallScreens();
   }
 });
-
 
 // Out of page animation
 document.addEventListener("DOMContentLoaded", function() { 
