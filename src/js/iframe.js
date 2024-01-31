@@ -1,18 +1,19 @@
-const iframe = document.querySelector(".video-section .video");
-const videoOverlay = document.querySelector(".video-section .video-overlay");
-const videoIcon = document.querySelector(".video-section .video-play-icon");
+const iframe = document.querySelector(".iframe-section .iframe");
+const videoThumbnail = document.querySelector(".iframe-thumbnail");
+const videoOverlay = document.querySelector(".iframe-section .iframe-overlay");
+const videoIcon = document.querySelector(".iframe-section .iframe-play-icon");
 let play = false;
 
-console.log(iframe)
 
 function toggleVideoPlayback() {
   if (!play) {
-    // Check if the iframe src already has query parameters
-    let src = iframe.getAttribute("src");
-    let symbol = src.includes('?') ? '&' : '?';
-
-    // Append 'autoplay=1' and potentially 'mute=1' to the src
-    iframe.src = src + symbol + "autoplay=1&mute=1"; // Consider adding mute=1 if needed
+    // Hide the thumbnail and show the iframe
+    videoThumbnail.style.display = 'none';
+    iframe.style.display = 'block';
+    
+    let videoUrl = 'https://www.youtube.com/embed/BNN9p7YH_hQ?autoplay=1&mute=1'; // Autoplay and mute
+    iframe.src = videoUrl;
+    
     videoIcon.classList.add("hidden");
     videoOverlay.style.display = "none";
     play = true;
@@ -20,6 +21,11 @@ function toggleVideoPlayback() {
     // Reload the iframe to its original src to stop the video
     let originalSrc = iframe.getAttribute("src").split("?")[0];
     iframe.src = originalSrc;
+    
+    // Show the thumbnail and hide the iframe again
+    videoThumbnail.style.display = 'block';
+    iframe.style.display = 'none';
+    
     videoIcon.classList.remove("hidden");
     videoOverlay.style.display = "block";
     play = false;
