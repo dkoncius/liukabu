@@ -2,6 +2,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+
 // Scroll to top after refresh
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -51,6 +52,7 @@ function runAnimationsForLargeScreens() {
   document.body.style.overflow = 'hidden';
 
   const tl = gsap.timeline();
+  console.log()
 
   // Animate header elements
   tl.to('header .cover', {
@@ -153,30 +155,28 @@ function runAnimationsForLargeScreens() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Check if the screen width is greater than 1025px
-  if (window.innerWidth > 1025) {
-    // Run animations for large screens
-    runAnimationsForLargeScreens();
-  } else {
-    // Run animations for small screens
-    runAnimationsForSmallScreens();
-  }
-});
+if (window.innerWidth > 1025) {
+  // Run animations for large screens
+  runAnimationsForLargeScreens();
+} else {
+  // Run animations for small screens
+  runAnimationsForSmallScreens();
+}
+
 
 // Out of page animation
-document.addEventListener("DOMContentLoaded", function() { 
-  document.querySelectorAll('.next-page-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const url = this.href;
+document.querySelectorAll('.next-page-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const url = this.href;
 
-      gsap.to('body', {
-        opacity: 0,
-        duration: 1,
-        ease: "power3.inOut",
-        onComplete: () => window.location.href = url
-      });
+    gsap.to('body', {
+      opacity: 0,
+      duration: 1,
+      ease: "power3.inOut",
+      onComplete: () => window.location.href = url
     });
   });
 });
+
+

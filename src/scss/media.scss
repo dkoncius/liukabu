@@ -7,7 +7,6 @@
         .banner {
             width:  150px !important;
         }
-    
     }
 }
 
@@ -53,7 +52,7 @@
             
             }
         
-            &::before {
+            button {
                 height: 50px;
                 line-height: 50px;
                 background: $pink;

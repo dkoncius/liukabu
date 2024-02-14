@@ -16,22 +16,22 @@
         clip-path: inset(0 0 100% 0);
         transform: translateY(50px);
 
-        &::before {
+        button {
             cursor: url("/icons/hand-pointer-solid.svg"), pointer;
             font-family:'Hachi Maru Pop', cursive;
-            content: "Pirkti";
             text-align: center;
             position: absolute;
+            left: 0;
             bottom: 1.3%;
             width: 100%;
-            line-height: 75px;
-            height: 75px;
+            height: 78px;
             background: rgba(224, 123, 167, 0.3);
             color: white;
+            border: none;
             transition: 0.3s;
         }
 
-        &:hover::before {
+        &:hover button {
             background: $pink;
         }
 

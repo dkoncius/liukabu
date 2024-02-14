@@ -1,11 +1,7 @@
-header {
-    .cover {
-        width: 100%;
-        height: 25vw;
-        background-image: url("/covers/desktop-cover.jpg");
-        background-size: cover;
-        background-position: 50% 100%;
-        position: relative;
-        clip-path: inset(0 0 100% 0);
-      }
+header .cover {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+  object-position: center;
+  clip-path: inset(0% 0% 100% 0%);
 }
