@@ -2,6 +2,20 @@
 const app = document.getElementById("app");
 const apiUrl = "https://liukabu-backend-production.up.railway.app";
 
+async function loadAndApplyMeta() {
+  try {
+    const response = await fetch(`${apiUrl}/api/metas?populate=*`);
+    if (!response.ok) throw new Error('Network response was not ok for meta data');
+    const metaData = await response.json();
+
+    // Create meta HTML string (including title, description, open graph, etc.)
+    const metaHTML = createMetaHTML(metaData.data);
+    document.head.insertAdjacentHTML('beforeend', metaHTML);
+  } catch (error) {
+    console.error("Failed to fetch meta data:", error);
+  }
+}
+
 // Async function to fetch home page data
 const fetchAndUpdateHomePage = async () => {
     try {
@@ -35,7 +49,7 @@ const fetchAndUpdateHomePage = async () => {
         
         // Dynamically update specific sections
         // Note: This assumes you have placeholders or containers for these sections in your HTML
-        document.head.innerHTML += metaHTML;
+        // document.head.innerHTML += metaHTML;
         app.innerHTML += headerHTML;
         app.innerHTML += bannersHTML;
         app.innerHTML += pitchHTML;
@@ -59,29 +73,28 @@ const fetchAndUpdateHomePage = async () => {
 function constructMetaHTML(meta) {
     const {title, description, keywords, url} = meta[0].attributes
     const imageUrl = meta[0].attributes.image.data.attributes.url
-    console.log(imageUrl)
     return `
         <!-- Meta Description -->
-        <meta name="description" content="${description}">
+        <meta name="description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
 
         <!-- Meta Keywords -->
-        <meta name="keywords" content="${keywords}">
+        <meta name="keywords" content="LiuKaBu, laisvalaikis, muzika,zaidimai, žaidimai, zaidimai vaikams, žaidimai vaikams, animacijos, entertainment, music, animation, family, concert, magical, fun">
 
         <!-- Open Graph Meta Tags for Social Sharing -->
-        <meta property="og:title" content="${title}">
-        <meta property="og:description" content="${description}">
-        <meta property="og:image" content="${apiUrl}${imageUrl}">
-        <meta property="og:url" content="h${url}">
+        <meta property="og:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
+        <meta property="og:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
+        <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
+        <meta property="og:url" content="hhttps://www.liukabu.lt">
         <meta property="og:type" content="website">
 
         <!-- Twitter Meta Tags for Social Sharing -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="${title}">
-        <meta name="twitter:description" content="${description}">
-        <meta property="og:image" content="${apiUrl}${imageUrl}">
-        <meta property="og:url" content="${url}">
+        <meta name="twitter:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
+        <meta name="twitter:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
+        <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
+        <meta property="og:url" content="https://www.liukabu.lt">
 
-        <title>${title}</title>
+        <title>LiuKaBu - Magiškos linksmybės visai šeimai!</title>
     `;
 }
 
@@ -229,10 +242,8 @@ function constructFooterHTML(socialLinks) {
     `;
 }
 
-
 async function loadScripts() {
     await import('./animations.js');
-    // await import('./iframe.js');
     await import('./gallery.js');
     await import('./mail.js');
 }
