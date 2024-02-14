@@ -15,7 +15,7 @@ const fetchAndUpdateHomePage = async () => {
         const metaData = await metaResponse.json();
 
         // Fetch banners data
-        const bannersResponse = await fetch(`${apiUrl}/api/banners?populate=*`);
+        const bannersResponse = await fetch(`${apiUrl}/api/banners?populate=*&sort=button`);
         if (!bannersResponse.ok) throw new Error('Network response was not ok for banners');
         const bannersData = await bannersResponse.json();
 
