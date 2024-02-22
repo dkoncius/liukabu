@@ -38,7 +38,7 @@ const fetchAndUpdateHomePage = async () => {
         const attributes = data.data.attributes;
         
         // Assuming you have predefined methods to construct HTML for each section
-        const metaHTML = constructMetaHTML(metaData.data)
+        // const metaHTML = constructMetaHTML(metaData.data)
         const headerHTML = constructHeaderHTML(attributes.cover.data.attributes)
         const bannersHTML = constructBannersHTML(bannersData.data);
         const pitchHTML = constructPitchHTML(attributes);
@@ -70,33 +70,33 @@ const fetchAndUpdateHomePage = async () => {
 };
 
 // Example constructor functions (you need to define these based on actual data structure)
-function constructMetaHTML(meta) {
-    const {title, description, keywords, url} = meta[0].attributes
-    const imageUrl = meta[0].attributes.image.data.attributes.url
-    return `
-        <!-- Meta Description -->
-        <meta name="description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
+// function constructMetaHTML(meta) {
+//     const {title, description, keywords, url} = meta[0].attributes
+//     const imageUrl = meta[0].attributes.image.data.attributes.url
+//     return `
+//         <!-- Meta Description -->
+//         <meta name="description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
 
-        <!-- Meta Keywords -->
-        <meta name="keywords" content="LiuKaBu, laisvalaikis, muzika,zaidimai, žaidimai, zaidimai vaikams, žaidimai vaikams, animacijos, entertainment, music, animation, family, concert, magical, fun">
+//         <!-- Meta Keywords -->
+//         <meta name="keywords" content="LiuKaBu, laisvalaikis, muzika,zaidimai, žaidimai, zaidimai vaikams, žaidimai vaikams, animacijos, entertainment, music, animation, family, concert, magical, fun">
 
-        <!-- Open Graph Meta Tags for Social Sharing -->
-        <meta property="og:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
-        <meta property="og:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
-        <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
-        <meta property="og:url" content="hhttps://www.liukabu.lt">
-        <meta property="og:type" content="website">
+//         <!-- Open Graph Meta Tags for Social Sharing -->
+//         <meta property="og:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
+//         <meta property="og:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
+//         <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
+//         <meta property="og:url" content="hhttps://www.liukabu.lt">
+//         <meta property="og:type" content="website">
 
-        <!-- Twitter Meta Tags for Social Sharing -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
-        <meta name="twitter:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
-        <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
-        <meta property="og:url" content="https://www.liukabu.lt">
+//         <!-- Twitter Meta Tags for Social Sharing -->
+//         <meta name="twitter:card" content="summary_large_image">
+//         <meta name="twitter:title" content="LiuKaBu - Magiškos linksmybės visai šeimai!">
+//         <meta name="twitter:description" content="Ei, maži ir dideli, LiuKaBu atvyksta į Jūsų miestą ir kviečia pasinerti į pasakišką pasaulį, kuriame susijungs muzika, animacija ir didžiulė dozė džiaugsmo! Štai kas Jūsų laukia: Magiškas koncertas, teatralizuotas pasaulis ir žavūs jo personažai, koncertas nepaliks abejingų ir patiks ne tik vaikams, bet ir jų tėveliams bei seneliams.">
+//         <meta property="og:image" content="https://liukabu-backend-production.up.railway.app/uploads/mobile_cover_fc2688f67d.png">
+//         <meta property="og:url" content="https://www.liukabu.lt">
 
-        <title>LiuKaBu - Magiškos linksmybės visai šeimai!</title>
-    `;
-}
+//         <title>LiuKaBu - Magiškos linksmybės visai šeimai!</title>
+//     `;
+// }
 
 function constructHeaderHTML(coverData) {
     // Construct and return HTML string for the header section based on coverData
