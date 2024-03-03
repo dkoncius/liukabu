@@ -24,12 +24,12 @@ const fetchAndUpdateHomePage = async () => {
         const data = await response.json();
         
         // Fetch banners data
-        const metaResponse = await fetch(`${apiUrl}/api/metas?populate=*`);
-        if (!metaResponse.ok) throw new Error('Network response was not ok for banners');
-        const metaData = await metaResponse.json();
+        // const metaResponse = await fetch(`${apiUrl}/api/metas?populate=*`);
+        // if (!metaResponse.ok) throw new Error('Network response was not ok for meta data');
+        // const metaData = await metaResponse.json();
 
         // Fetch banners data
-        const bannersResponse = await fetch(`${apiUrl}/api/banners?populate=*&sort=button`);
+        const bannersResponse = await fetch(`${apiUrl}/api/banners?sort=button`);
         if (!bannersResponse.ok) throw new Error('Network response was not ok for banners');
         const bannersData = await bannersResponse.json();
 
@@ -40,7 +40,7 @@ const fetchAndUpdateHomePage = async () => {
         // Assuming you have predefined methods to construct HTML for each section
         // const metaHTML = constructMetaHTML(metaData.data)
         const headerHTML = constructHeaderHTML(attributes.cover.data.attributes)
-        const bannersHTML = constructBannersHTML(bannersData.data);
+        // const bannersHTML = constructBannersHTML(bannersData.data);
         const pitchHTML = constructPitchHTML(attributes);
         const iframeHTML = constructIframeHTML(attributes.youtubeLink);
         const galleryHTML = constructGalleryHTML(attributes.galleryImages);
@@ -51,7 +51,7 @@ const fetchAndUpdateHomePage = async () => {
         // Note: This assumes you have placeholders or containers for these sections in your HTML
         // document.head.innerHTML += metaHTML;
         app.innerHTML += headerHTML;
-        app.innerHTML += bannersHTML;
+        // app.innerHTML += bannersHTML;
         app.innerHTML += pitchHTML;
         app.innerHTML += iframeHTML;
         app.innerHTML += galleryHTML;
