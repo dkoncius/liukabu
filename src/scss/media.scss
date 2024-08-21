@@ -1,7 +1,9 @@
 
 
 @media (max-width: 600px){
-
+    header .cover {
+        object-fit: contain;
+    }
     .banners {
         gap: 10px;
         .banner {

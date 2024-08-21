@@ -62,21 +62,68 @@ function runAnimationsForLargeScreens() {
     clipPath: "inset(0% 0% 0% 0%)"
   }, "0.5");
 
+  // Animate scroll-down text and dots sequentially
+  tl.to('.scroll-down p', {
+    duration: 0.8,
+    opacity: 1,
+    y: 0,
+    ease: 'power3.out'
+  });
+
+  tl.to('.scroll-down .dot-1', {
+    duration: 0.5,
+    opacity: 1,
+    scale: 1,
+    ease: 'back.out'
+  });
+
+  tl.to('.scroll-down .dot-2', {
+    duration: 0.5,
+    opacity: 1,
+    scale: 1,
+    ease: 'back.out'
+  }, '-=0.3'); // Overlap with the previous animation for smooth transition
+
+  tl.to('.scroll-down .dot-3', {
+    duration: 0.5,
+    opacity: 1,
+    scale: 1,
+    ease: 'back.out'
+  }, '-=0.3'); // Overlap with the previous animation
+
   // Enable scrolling after the animation is complete
   tl.eventCallback("onComplete", () => {
     document.body.style.overflow = 'auto';
     document.body.style.minHeight = '200vh';
   });
 
+  // Iterate through banner elements and add animations to the timeline
+  gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
+    gsap.to(banner, {
+      scrollTrigger: {
+        trigger: banner,
+        start: 'top bottom-=520', // Animation starts when the banner is at the center of the viewport
+        end: 'bottom top-=200',   // Animation ends when the banner is still at the center
+        toggleActions: 'play none none none',
+        markers: false
+      },
+      clipPath: "inset(0 0 0% 0)",
+      y: 0,
+      duration: 1, // Animation duration in seconds
+      ease: "power3.out",
+      stagger: 0.2
+    });
+  });
 
-// Iterate through banner elements and add animations to the timeline
-gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
-  // Add an animation to the timeline for each banner
-  tl.to(banner, {
-    clipPath: "inset(0 0 0% 0)",
-    y: 0,
-  }, '-=0.8'); // Overlap animations slightly for a smoother transition
-});
+  // ScrollTrigger animation to hide the "scroll-down" element
+  gsap.to(".scroll-down", {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: ".scroll-down",
+      start: "top center", // Hide when it reaches the center of the viewport
+      toggleActions: "play none none none",
+    },
+  });
 
   // Play the timeline
   tl.play();

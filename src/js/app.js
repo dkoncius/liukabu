@@ -40,22 +40,24 @@ const fetchAndUpdateHomePage = async () => {
         // Assuming you have predefined methods to construct HTML for each section
         // const metaHTML = constructMetaHTML(metaData.data)
         const headerHTML = constructHeaderHTML(attributes.cover.data.attributes)
-        const bannersHTML = constructBannersHTML(bannersData.data);
-        const pitchHTML = constructPitchHTML(attributes);
         const iframeHTML = constructIframeHTML(attributes.youtubeLink);
+        const pitchHTML = constructPitchHTML(attributes);
+        const bannersHTML = constructBannersHTML(bannersData.data);
         const galleryHTML = constructGalleryHTML(attributes.galleryImages);
-        const formHTML = constructFormHTML(attributes);
+        const spotifyHTML = constructSpotifyHTML();
+        // const formHTML = constructFormHTML(attributes);
         const footerHTML = constructFooterHTML(attributes.socialLinks);
         
         // Dynamically update specific sections
         // Note: This assumes you have placeholders or containers for these sections in your HTML
         // document.head.innerHTML += metaHTML;
         app.innerHTML += headerHTML;
-        app.innerHTML += bannersHTML;
-        app.innerHTML += pitchHTML;
         app.innerHTML += iframeHTML;
+        app.innerHTML += pitchHTML;
+        app.innerHTML += bannersHTML;
         app.innerHTML += galleryHTML;
-        app.innerHTML += formHTML;
+        app.innerHTML += spotifyHTML;
+        // app.innerHTML += formHTML;
         app.innerHTML += footerHTML;
 
          // Now that iframe is added to the DOM, initialize it
@@ -98,17 +100,27 @@ const fetchAndUpdateHomePage = async () => {
 //     `;
 // }
 
+// old dots
+// function constructHeaderHTML(coverData) {
+//     // Construct and return HTML string for the header section based on coverData
+//     return `
+//         <header>
+//             <img class="cover" src="${apiUrl}${coverData.url}" alt="">
+//             <div class="scroll-down">
+//                 <p>Slinkti žemyn</p>
+//                 <div class="dot-1"></div>
+//                 <div class="dot-2"></div>
+//                 <div class="dot-3"></div>
+//           </div>
+//         </header>
+//     `;
+// }
+
 function constructHeaderHTML(coverData) {
     // Construct and return HTML string for the header section based on coverData
     return `
         <header>
             <img class="cover" src="${apiUrl}${coverData.url}" alt="">
-            <div class="scroll-down">
-                <p>Slinkti žemyn</p>
-                <div class="dot-1"></div>
-                <div class="dot-2"></div>
-                <div class="dot-3"></div>
-          </div>
         </header>
     `;
 }
@@ -199,20 +211,30 @@ function constructGalleryHTML(images) {
     `;
 }
 
-function constructFormHTML(formData) {
-    const {emailParagraph, emailInput, emailButton} = formData
-    return `
-        <section class="form-section">
-            <p>${emailParagraph}</p>
+// function constructFormHTML(formData) {
+//     const {emailParagraph, emailInput, emailButton} = formData
+//     return `
+//         <section class="form-section">
+//             <p>${emailParagraph}</p>
             
-            <form id="myForm" action="#">
-                <input id="email" type="email" placeholder="${emailInput}" autocomplete="off" required>
-                <input type="submit" value="${emailButton}">
-                <p id="successMessage">&nbsp;</p>
-            </form>
+//             <form id="myForm" action="#">
+//                 <input id="email" type="email" placeholder="${emailInput}" autocomplete="off" required>
+//                 <input type="submit" value="${emailButton}">
+//                 <p id="successMessage">&nbsp;</p>
+//             </form>
+//         </section>
+//     `;
+// }
+
+function constructSpotifyHTML() {
+    return `
+        <section class="spotify-section">
+           <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/7qDH4eKRuttsFrCbD9utTy?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </section>
     `;
 }
+
+
 
 function constructFooterHTML(socialLinks) {
     const {facebookLink, instagramLink, youtubeLink} = socialLinks
