@@ -6,16 +6,14 @@
     gap: 50px;
     max-width: 1600px;
     width: 90%;
-    margin: auto;
-    margin-top: -50px;
-    margin-bottom: 50px;
+    margin: 50px auto;
 
     .banner {
         justify-self: center;
         width: 250px;
         position: relative;
         clip-path: inset(0 0 100% 0);
-        transform: translateY(50px);
+        // transform: translateY(50px);
 
         button {
             cursor: url("/icons/hand-pointer-solid.svg"), pointer;

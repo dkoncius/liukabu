@@ -8,7 +8,7 @@
     .banners {
         gap: 10px;
         .banner {
-            // width:  150px !important;
+            // width: 150px;
         }
     }
 }
@@ -44,10 +44,7 @@
 
         .banner {
             opacity: 0;
-            width: 300px;
             clip-path: inset(0 0 0% 0);
-            // transform: translateY(50px);
-            // height: 250px;
           
             img {
                 transform: translateY(-5px);
@@ -59,9 +56,6 @@
                 line-height: 50px;
                 background: $pink;
                 bottom: 0;
-                z-index: 1;
-                // position: absolute;
-                // top: 0;
             }
         }
     }

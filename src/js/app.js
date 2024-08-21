@@ -267,7 +267,7 @@ function constructFooterHTML(socialLinks) {
 async function loadScripts() {
     await import('./animations.js');
     await import('./gallery.js');
-    await import('./mail.js');
+    // await import('./mail.js');
 }
 
 document.addEventListener("DOMContentLoaded", async function() {

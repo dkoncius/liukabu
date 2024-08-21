@@ -17,42 +17,12 @@ function runAnimationsForSmallScreens() {
       ease: "power3.out"
     }, "-=0.8"); // Adjust the overlap for a staggered effect
   });
-
-  // ScrollTrigger animation for the "scroll-down" element
-  gsap.to(".scroll-down", {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: ".scroll-down",
-      start: "top center", // Hide when it reaches the center of the viewport
-      toggleActions: "play none none none",
-    },
-  });
-
-  // Pitch section animation
-  const pitchTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".pitch",
-      start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
-      end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
-      toggleActions: "play none none none",
-      markers: false
-    },
-  });
-
-  pitchTl.from(".pitch", {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    ease: "power3.out",
-  });
 }
 
 // Function to run animations for screens greater than 1025px
 function runAnimationsForLargeScreens() {
-  document.body.style.overflow = 'hidden';
 
   const tl = gsap.timeline();
-  console.log()
 
   // Animate header elements
   tl.to('header .cover', {
@@ -61,12 +31,6 @@ function runAnimationsForLargeScreens() {
     ease: "power3.inOut",
     clipPath: "inset(0% 0% 0% 0%)"
   }, "0.5");
-
-  // Enable scrolling after the animation is complete
-  tl.eventCallback("onComplete", () => {
-    document.body.style.overflow = 'auto';
-    document.body.style.minHeight = '200vh';
-  });
 
 
 // Iterate through banner elements and add animations to the timeline
@@ -80,32 +44,6 @@ gsap.utils.toArray('.banners .banner').forEach((banner, index) => {
 
   // Play the timeline
   tl.play();
-
-  // Enable scrolling after the animation is complete
-  tl.eventCallback("onComplete", () => {
-    document.body.style.overflow = 'auto';
-    document.body.style.minHeight = '200vh';
-  });
-
-  // Pitch animation
-  // Create a GSAP timeline for the pitch section animation
-  const pitchTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".pitch",
-      start: "top bottom-=200", // Start the animation when the top of the section is at the bottom of the viewport
-      end: "bottom bottom",   // End the animation when the bottom of the section is at the top of the viewport
-      toggleActions: "play none none none",
-      markers: false
-    },
-  });
-
-  // Define the animations for the pitch section
-  pitchTl.from(".pitch", {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    ease: "power3.out",
-  });
 }
 
 if (window.innerWidth > 1025) {
