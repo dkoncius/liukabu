@@ -1,9 +1,10 @@
 
 
 @media (max-width: 600px){
-    header .cover {
-        object-fit: contain;
+    .iframe-section {
+        height: 250px
     }
+
     .banners {
         gap: 10px;
         .banner {
