@@ -5,3 +5,7 @@ header .cover {
   object-position: center;
   clip-path: inset(0% 0% 100% 0%);
 }
+
+header .mobile-cover {
+  display: none;
+}

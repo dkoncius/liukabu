@@ -39,7 +39,7 @@ const fetchAndUpdateHomePage = async () => {
         const attributes = data.data.attributes;
         // Assuming you have predefined methods to construct HTML for each section
         // const metaHTML = constructMetaHTML(metaData.data)
-        const headerHTML = constructHeaderHTML(attributes.desktop_cover.data.attributes)
+        const headerHTML = constructHeaderHTML(attributes.desktop_cover.data.attributes, attributes.mobile_cover.data.attributes)
         const iframeHTML = constructIframeHTML(attributes.youtubeLink);
         const pitchHTML = constructPitchHTML(attributes);
         const bannersHTML = constructBannersHTML(bannersData.data);
@@ -116,11 +116,13 @@ const fetchAndUpdateHomePage = async () => {
 //     `;
 // }
 
-function constructHeaderHTML(coverData) {
+function constructHeaderHTML(desktop_cover, mobile_cover) {
     // Construct and return HTML string for the header section based on coverData
+    console.log(desktop_cover, mobile_cover)
     return `
         <header>
-            <img class="cover" src="${apiUrl}${coverData.url}" alt="">
+            <img class="cover desktop-cover" src="${apiUrl}${desktop_cover.url}" alt="">
+            <img class="cover mobile-cover" src="${apiUrl}${mobile_cover.url}" alt="">
         </header>
     `;
 }

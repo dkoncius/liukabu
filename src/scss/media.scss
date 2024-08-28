@@ -11,6 +11,15 @@
             // width: 150px;
         }
     }
+
+    header .desktop-cover {
+        display: none;
+    }
+
+    header .mobile-cover {
+        display: block;
+        height: 100%;
+    }
 }
 
 
