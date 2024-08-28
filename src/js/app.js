@@ -2,22 +2,23 @@
 const app = document.getElementById("app");
 const apiUrl = "https://liukabu-backend-production.up.railway.app";
 
-async function loadAndApplyMeta() {
-  try {
-    const response = await fetch(`${apiUrl}/api/metas?populate=*`);
-    if (!response.ok) throw new Error('Network response was not ok for meta data');
-    const metaData = await response.json();
+// async function loadAndApplyMeta() {
+//   try {
+//     const response = await fetch(`${apiUrl}/api/metas?populate=*`);
+//     if (!response.ok) throw new Error('Network response was not ok for meta data');
+//     const metaData = await response.json();
 
-    // Create meta HTML string (including title, description, open graph, etc.)
-    const metaHTML = createMetaHTML(metaData.data);
-    document.head.insertAdjacentHTML('beforeend', metaHTML);
-  } catch (error) {
-    console.error("Failed to fetch meta data:", error);
-  }
-}
+//     // Create meta HTML string (including title, description, open graph, etc.)
+//     const metaHTML = createMetaHTML(metaData.data);
+//     document.head.insertAdjacentHTML('beforeend', metaHTML);
+//   } catch (error) {
+//     console.error("Failed to fetch meta data:", error);
+//   }
+// }
 
 // Async function to fetch home page data
 const fetchAndUpdateHomePage = async () => {
+    console.log("veikia?")
     try {
         const response = await fetch(`${apiUrl}/api/home-page?populate=*`);
         if (!response.ok) throw new Error('Network response was not ok');
@@ -36,10 +37,9 @@ const fetchAndUpdateHomePage = async () => {
         
         // Extract needed data from the response
         const attributes = data.data.attributes;
-        
         // Assuming you have predefined methods to construct HTML for each section
         // const metaHTML = constructMetaHTML(metaData.data)
-        const headerHTML = constructHeaderHTML(attributes.cover.data.attributes)
+        const headerHTML = constructHeaderHTML(attributes.desktop_cover.data.attributes)
         const iframeHTML = constructIframeHTML(attributes.youtubeLink);
         const pitchHTML = constructPitchHTML(attributes);
         const bannersHTML = constructBannersHTML(bannersData.data);
