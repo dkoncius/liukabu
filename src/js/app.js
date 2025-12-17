@@ -18,7 +18,6 @@ const apiUrl = "https://liukabu-backend-production.up.railway.app";
 
 // Async function to fetch home page data
 const fetchAndUpdateHomePage = async () => {
-    console.log("veikia?")
     try {
         const response = await fetch(`${apiUrl}/api/home-page?populate=*`);
         if (!response.ok) throw new Error('Network response was not ok');
@@ -125,7 +124,6 @@ const fetchAndUpdateHomePage = async () => {
 
 function constructHeaderHTML(desktop_cover, mobile_cover) {
     // Construct and return HTML string for the header section based on coverData
-    console.log(desktop_cover, mobile_cover)
     return `
         <header>
             <img class="cover desktop-cover" src="${apiUrl}${desktop_cover.url}" alt="">
