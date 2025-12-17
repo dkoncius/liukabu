@@ -52,8 +52,8 @@ const fetchAndUpdateHomePage = async () => {
         // document.head.innerHTML += metaHTML;
         app.innerHTML += headerHTML;
         
-        // Only add iframe section if youtubeLink exists
-        if (attributes.youtubeLink) {
+        // Only add iframe section if youtubeLink exists and is a valid string
+        if (attributes.youtubeLink && typeof attributes.youtubeLink === 'string' && attributes.youtubeLink.trim() !== '') {
             const iframeHTML = constructIframeHTML(attributes.youtubeLink);
             app.innerHTML += iframeHTML;
         }
@@ -66,7 +66,7 @@ const fetchAndUpdateHomePage = async () => {
         app.innerHTML += footerHTML;
 
          // Now that iframe is added to the DOM, initialize it (only if youtubeLink exists)
-         if (attributes.youtubeLink) {
+         if (attributes.youtubeLink && typeof attributes.youtubeLink === 'string' && attributes.youtubeLink.trim() !== '') {
              const { initIframe } = await import('./iframe.js');
              initIframe(attributes.iframeUrl); // Adjust based on actual structure
          }
@@ -172,6 +172,11 @@ function constructPitchHTML(pitchData) {
 }
 
 function constructIframeHTML(youtubeUrl) {
+    // Safety check: return empty string if youtubeUrl is null, undefined, or not a string
+    if (!youtubeUrl || typeof youtubeUrl !== 'string') {
+        return '';
+    }
+    
     // Extract the video ID from the YouTube URL
     let videoIdMatch = youtubeUrl.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
     let videoId = "";
