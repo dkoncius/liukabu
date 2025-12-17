@@ -41,7 +41,6 @@ const fetchAndUpdateHomePage = async () => {
         const headerHTML = constructHeaderHTML(attributes.desktop_cover.data.attributes, attributes.mobile_cover.data.attributes)
         const pitchHTML = constructPitchHTML(attributes);
         const bannersHTML = constructBannersHTML(bannersData.data);
-        const galleryHTML = constructGalleryHTML(attributes.galleryImages);
         const spotifyHTML = constructSpotifyHTML();
         // const formHTML = constructFormHTML(attributes);
         const footerHTML = constructFooterHTML(attributes.socialLinks);
@@ -59,7 +58,13 @@ const fetchAndUpdateHomePage = async () => {
         
         app.innerHTML += pitchHTML;
         app.innerHTML += bannersHTML;
-        app.innerHTML += galleryHTML;
+        
+        // Only add gallery section if galleryImages exists and has data
+        if (attributes.galleryImages && attributes.galleryImages.data && attributes.galleryImages.data.length > 0) {
+            const galleryHTML = constructGalleryHTML(attributes.galleryImages);
+            app.innerHTML += galleryHTML;
+        }
+        
         app.innerHTML += spotifyHTML;
         // app.innerHTML += formHTML;
         app.innerHTML += footerHTML;
@@ -201,6 +206,11 @@ function constructIframeHTML(youtubeUrl) {
 
 
 function constructGalleryHTML(images) {
+    // Safety check: return empty string if images or images.data is missing
+    if (!images || !images.data || !Array.isArray(images.data) || images.data.length === 0) {
+        return '';
+    }
+    
     const galleryHTML = images.data.map(image => {
         const { name, url } = image.attributes;
         const imageUrl = `${apiUrl}${url}`;

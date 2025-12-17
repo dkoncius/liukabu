@@ -1,5 +1,9 @@
 export function initIframe() {
   const iframeSection = document.querySelector(".iframe-section");
+  if (!iframeSection) {
+    return; // Exit early if iframe section doesn't exist
+  }
+  
   const iframe = iframeSection.querySelector(".iframe");
   const videoThumbnail = iframeSection.querySelector(".iframe-thumbnail");
   const videoOverlay = iframeSection.querySelector(".iframe-overlay");

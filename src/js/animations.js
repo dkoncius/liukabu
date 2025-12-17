@@ -24,13 +24,16 @@ function runAnimationsForLargeScreens() {
 
   const tl = gsap.timeline();
 
-  // Animate header elements
-  tl.to('header .cover', {
-    y: 0,
-    duration: 1,
-    ease: "power3.inOut",
-    clipPath: "inset(0% 0% 0% 0%)"
-  }, "0.5");
+  // Animate header elements (only if they exist)
+  const coverElement = document.querySelector('header .cover');
+  if (coverElement) {
+    tl.to('header .cover', {
+      y: 0,
+      duration: 1,
+      ease: "power3.inOut",
+      clipPath: "inset(0% 0% 0% 0%)"
+    }, "0.5");
+  }
 
 
 // Iterate through banner elements and add animations to the timeline
