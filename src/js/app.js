@@ -40,7 +40,6 @@ const fetchAndUpdateHomePage = async () => {
         // Assuming you have predefined methods to construct HTML for each section
         // const metaHTML = constructMetaHTML(metaData.data)
         const headerHTML = constructHeaderHTML(attributes.desktop_cover.data.attributes, attributes.mobile_cover.data.attributes)
-        const iframeHTML = constructIframeHTML(attributes.youtubeLink);
         const pitchHTML = constructPitchHTML(attributes);
         const bannersHTML = constructBannersHTML(bannersData.data);
         const galleryHTML = constructGalleryHTML(attributes.galleryImages);
@@ -52,7 +51,13 @@ const fetchAndUpdateHomePage = async () => {
         // Note: This assumes you have placeholders or containers for these sections in your HTML
         // document.head.innerHTML += metaHTML;
         app.innerHTML += headerHTML;
-        app.innerHTML += iframeHTML;
+        
+        // Only add iframe section if youtubeLink exists
+        if (attributes.youtubeLink) {
+            const iframeHTML = constructIframeHTML(attributes.youtubeLink);
+            app.innerHTML += iframeHTML;
+        }
+        
         app.innerHTML += pitchHTML;
         app.innerHTML += bannersHTML;
         app.innerHTML += galleryHTML;
@@ -60,9 +65,11 @@ const fetchAndUpdateHomePage = async () => {
         // app.innerHTML += formHTML;
         app.innerHTML += footerHTML;
 
-         // Now that iframe is added to the DOM, initialize it
-         const { initIframe } = await import('./iframe.js');
-         initIframe(attributes.iframeUrl); // Adjust based on actual structure
+         // Now that iframe is added to the DOM, initialize it (only if youtubeLink exists)
+         if (attributes.youtubeLink) {
+             const { initIframe } = await import('./iframe.js');
+             initIframe(attributes.iframeUrl); // Adjust based on actual structure
+         }
 
          // Note: The banners section remains unchanged, as it's not dynamically updated here
     } catch (error) {
